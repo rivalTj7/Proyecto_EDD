@@ -1,7 +1,6 @@
 module btreeclass
 
     use btreenode
-    use M_strings
     implicit none
 
     type BTree

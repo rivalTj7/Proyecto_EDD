@@ -13,13 +13,13 @@ module AVL_Tree_M
       type(Node_t), pointer :: Right => null()
   end type Node_t
 
-  type Tree_t
+  type TreeAVL
       type(Node_t), pointer :: root => null()
       contains
-      procedure :: newTree
-      procedure :: insert
-      procedure :: generateGraph
-  end type Tree_t
+        procedure :: newTree
+        procedure :: insert
+        procedure :: generateGraph
+  end type TreeAVL
 
   contains
 
@@ -34,7 +34,7 @@ module AVL_Tree_M
   end function NewNode
 
   subroutine newTree(self)
-    class(Tree_t), intent(inout) :: self
+    class(TreeAVL), intent(inout) :: self
     self%root => null()
   end subroutine newTree
 
@@ -164,7 +164,7 @@ module AVL_Tree_M
   end function insert2
 
   subroutine insert(tree, value)
-    class(Tree_t), intent(inout) :: tree
+    class(TreeAVL), intent(inout) :: tree
     integer, intent(in) :: value
     logical :: increase
 
@@ -175,7 +175,7 @@ module AVL_Tree_M
 
 
   subroutine GenerateGraph(this)
-    class(Tree_t), intent(inout) :: this
+    class(TreeAVL), intent(inout) :: this
     character(len=:), allocatable :: dotStructure
     character(len=:), allocatable :: createNodes
     character(len=:), allocatable :: linkNodes
